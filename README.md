@@ -8,6 +8,7 @@ The bot accepts commands such as:
 1) /start - Launch the bot and register in it
 2) /addinfo - Add information (First name, Last name)
 3) /command - Display all commands
+4) /history - Display all user queries
 
 ## Download
 
