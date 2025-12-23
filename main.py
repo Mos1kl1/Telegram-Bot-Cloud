@@ -101,6 +101,7 @@ def command(message):
     1) /start - Launch the bot and register in it\n
 2) /addinfo - Add information (First name, Last name)\n
 3) /command - Display all commands\n
+4) /history - Display all user queries\n
     ''')
 
 @bot.message_handler(func=lambda message: message.text == "/history")
