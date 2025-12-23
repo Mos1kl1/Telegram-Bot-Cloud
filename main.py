@@ -33,7 +33,12 @@ def start(message):
         user = cursor.fetchone()
 
         if user:
-            bot.send_message(message.chat.id, "Вы уже зарегистрированы")
+            markup = telebot.types.ReplyKeyboardMarkup(resize_keyboard=True)
+            btn1 = telebot.types.KeyboardButton("/addinfo")
+            btn2 = telebot.types.KeyboardButton("/command")
+            btn3 = telebot.types.KeyboardButton("/history")
+            markup.add(btn1, btn2, btn3)
+            bot.send_message(message.chat.id, "You are already registered", reply_markup=markup)
         else:
             cursor.execute(
                 "INSERT INTO Users (User_id, username) VALUES (?, ?)",
@@ -41,19 +46,21 @@ def start(message):
             )
             conn.commit()
             markup = telebot.types.ReplyKeyboardMarkup(resize_keyboard=True)
-            btn = telebot.types.KeyboardButton("Добавить информацию")
-            markup.add(btn)
-            bot.send_message(message.chat.id, "Вы успешно зарегистрированы", reply_markup=markup)
+            btn1 = telebot.types.KeyboardButton("/addinfo")
+            btn2 = telebot.types.KeyboardButton("/command")
+            btn3 = telebot.types.KeyboardButton("/history")
+            markup.add(btn1, btn2, btn3)
+            bot.send_message(message.chat.id, "You have successfully registered.", reply_markup=markup)
 
 
 user_states = {}
 
 
-@bot.message_handler(func=lambda message: message.text == "Добавить информацию")
+@bot.message_handler(func=lambda message: message.text == "/addinfo")
 def add(message):
     user_id = message.from_user.id
     user_states[user_id] = 'waiting_first_name'
-    bot.send_message(message.chat.id, "Напишите своё имя: ")
+    bot.send_message(message.chat.id, "Write your first name: ")
 
 
 @bot.message_handler(func=lambda message:
@@ -63,7 +70,7 @@ def get_first_name(message):
     user_id = message.from_user.id
     first_name = message.text.strip()
     user_states[user_id] = {'first_name': first_name, 'state': 'waiting_last_name'}
-    bot.send_message(message.chat.id, "Напишите свою фамилию: ")
+    bot.send_message(message.chat.id, "Write your last name: ")
 
 
 @bot.message_handler(func=lambda message:
@@ -84,10 +91,21 @@ def get_last_name(message):
         conn.commit()
 
     del user_states[user_id]
-    bot.send_message(message.chat.id, f"Данные успешно обновлены!\n"
-                                      f"Имя: {first_name}\n"
-                                      f"Фамилия: {last_name}")
+    bot.send_message(message.chat.id, f"Data updated successfully!\n"
+                                      f"First Name: {first_name}\n"
+                                      f"Last Name: {last_name}")
 
+@bot.message_handler(func=lambda message: message.text == "/command")
+def command(message):
+    bot.send_message(message.chat.id, '''
+    1) /start - Launch the bot and register in it\n
+2) /addinfo - Add information (First name, Last name)\n
+3) /command - Display all commands\n
+    ''')
+
+@bot.message_handler(func=lambda message: message.text == "/history")
+def history(message):
+    bot.send_message(message.chat.id, '''Your history:''')
 
 init_db()
 bot.polling(none_stop=True)
