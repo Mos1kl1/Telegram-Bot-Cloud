@@ -109,7 +109,7 @@ def get_last_name(message):
 @bot.message_handler(func=lambda message: message.text == "/command")
 def command(message):
     user_id = message.from_user.id
-    user_name = message.text.strip()
+    user_name = message.from_user.first_name
     bot.send_message(message.chat.id, '''
     1) /start - Launch the bot and register in it\n
 2) /addinfo - Add information (First name, Last name)\n
@@ -121,7 +121,7 @@ def command(message):
 @bot.message_handler(func=lambda message: message.text == "/history")
 def history(message):
     user_id = message.from_user.id
-    user_name = message.text.strip()
+    user_name = message.from_user.first_name
     bot.send_message(message.chat.id, '''Your history:''')
     logger.info(f"Name: {user_name}, ID: {user_id}, {message.text}")
 
