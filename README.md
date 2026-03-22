@@ -2,7 +2,7 @@
 
 ## 📊 Схема работы
 
-![](./block diagram of interaction.png)
+![Блок схема](./block diagram of interaction.png)
 
 ## Команда,Описание
 /start,"Инициализация, проверка регистрации и вывод меню."
