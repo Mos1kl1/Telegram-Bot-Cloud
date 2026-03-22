@@ -1,18 +1,20 @@
-# Telegram-Bot-Cloud
-A bot for encrypting text from a file or directly.
+# 🤖 Telegram Image Converter
 
-## Description
-The Telegram bot's main tasks are to encrypt text from your file or by sending it text directly.
-The bot adds you to the database to keep track of your request history.
-The bot accepts commands such as:
-1) /start - Launch the bot and register in it
-2) /addinfo - Add information (First name, Last name)
-3) /command - Display all commands
-4) /history - Display all user queries
+## 🚀 Основные возможности
 
-## Download
+* **Конвертация изображений:** Поддержка редких форматов, включая HEIC и TIFF (с LZW-сжатием).
+* **Управление профилем:** Сбор данных о пользователях (Имя, Фамилия).
+* **История действий:** База данных хранит последние 10 запросов пользователя.
+* **Безопасность:** Автоматическая очистка временных файлов после обработки.
 
-Cloning a repository
+---
 
-```git clone https://github.com/Mos1kl1/Telegram-Bot-Cloud.git```
+## 📊 Схема работы
 
+[![Блок схема](https://goo.su/tWv9597)
+
+## Команда,Описание
+/start,"Инициализация, проверка регистрации и вывод меню."
+/addinfo,Заполнение/изменение Имени и Фамилии в профиле.
+/konvert,Режим смены формата изображения.
+/history,Просмотр последних действий пользователя.
