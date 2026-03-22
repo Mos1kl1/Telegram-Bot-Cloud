@@ -23,7 +23,7 @@
 <pre>
 
 Bash
-git clone [https://github.com/Mos1kl1/Telegram-Bot-Cloud.git](https://github.com/Mos1kl1/Telegram-Bot-Cloud.git)
+git clone https://github.com/Mos1kl1/Telegram-Bot-Cloud.git
 cd Telegram-Bot-Cloud
   
 </pre>
