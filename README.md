@@ -11,7 +11,29 @@
 
 ## 📊 Схема работы
 
-[![Блок схема](https://goo.su/tWv9597)
+## 📊 Схема работы
+
+```mermaid
+graph TD
+    User[Пользователь] --> Start[/start/]
+    Start --> DB_Check{Зарегистрирован?}
+    DB_Check -- Нет --> Reg[Запись в SQLite]
+    DB_Check -- Да --> Menu[Главное меню]
+    Reg --> Menu
+
+    Menu --> AddInfo[/addinfo/]
+    AddInfo --> FSM[Сбор данных: Имя + Фамилия]
+    FSM --> DB_Upd[Обновление профиля]
+
+    Menu --> Convert[/konvert/]
+    Convert --> Upload[Загрузка фото/файла]
+    Upload --> Choice{Выбор формата}
+    Choice --> Process[Pillow: Обработка/RGB/LZW]
+    Process --> Send[Отправка готового файла]
+    Send --> Clean[Удаление кэша]
+
+    Menu --> Hist[/history/]
+    Hist --> DB_Read[Запрос последних 10 логов]
 
 ## Команда,Описание
 /start,"Инициализация, проверка регистрации и вывод меню."
