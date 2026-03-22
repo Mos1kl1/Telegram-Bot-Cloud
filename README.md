@@ -19,22 +19,17 @@
 * **Безопасность:** Автоматическая очистка временных файлов после обработки.
 
 ## Установка
-*Бот
-<pre>
-Bash
+* **Бот**
+```bash
 git clone https://github.com/Mos1kl1/Telegram-Bot-Cloud.git
 cd Telegram-Bot-Cloud 
-</pre>
-
-*Библиотеки
-<pre>
-Bash
+```
+* **Библиотеки**
+```bash
 pip install pyTelegramBotAPI Pillow pillow-heif
-</pre>
-
+```
 ## Запуск Бота
 
-<pre>
-Bash
+```bash
 python main.py
-</pre>
+```
