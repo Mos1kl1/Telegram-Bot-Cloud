@@ -21,26 +21,20 @@
 ## Установка
 *Бот
 <pre>
-
 Bash
 git clone https://github.com/Mos1kl1/Telegram-Bot-Cloud.git
-cd Telegram-Bot-Cloud
-  
+cd Telegram-Bot-Cloud 
 </pre>
 
 *Библиотеки
 <pre>
-
 Bash
 pip install pyTelegramBotAPI Pillow pillow-heif
-
 </pre>
 
 ## Запуск Бота
 
 <pre>
-
 Bash
 python main.py
-  
 </pre>
